@@ -151,3 +151,8 @@ polo(){
 
 #为mv -i创建一个方便的别名，使mv操作更安全
 alias mv="mv -i"
+
+#在打开zsh时即加载ssh-agent
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+     eval "$(ssh-agent -s)"
+fi

@@ -5,3 +5,9 @@ Host ub
     HostName 192.168.0.101
     IdentityFile ~/.ssh/id_ed25519
     LocalForward 9999 localhost:8888
+
+Host github.com
+    User Diketene
+    HostName github.com
+    IdentityFile ~/.ssh/id_rsa
+    AddKeysToAgent yes
