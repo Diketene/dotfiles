@@ -7,4 +7,4 @@ set nocompatible
 colorscheme slate
 
 map <C-m> :NERDTreeToggle<CR>
-
+set clipboard=unnamedplus
