@@ -11,7 +11,10 @@
                 "${file}",
                 "-lm",
                 "-o",
-                "${fileDirname}/bin/${fileBasenameNoExtension}"
+                "${fileDirname}/bin/${fileBasenameNoExtension}",
+                "-llapacke",
+                "-llapack",
+                "-lblas"
             ],
             "options": {
                 "cwd": "${fileDirname}"
