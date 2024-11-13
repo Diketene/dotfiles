@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "name": "Linux",
+            "name": "Linux C",
             "includePath": [
                 "${workspaceFolder}/**",
                 "/usr/include"
@@ -9,6 +9,16 @@
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c17",
+            "intelliSenseMode": "linux-gcc-x64"
+        },
+        {
+            "name": "Linux C++",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/gcc13.3.0/include/**"
+            ],
+            "defines": [],
+            "compilerPath": "/gcc13.3.0/bin/g++",
             "cppStandard": "c++20",
             "intelliSenseMode": "linux-gcc-x64"
         }
