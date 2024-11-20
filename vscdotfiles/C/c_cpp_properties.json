@@ -15,7 +15,8 @@
             "name": "Linux C++",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/gcc13.3.0/include/**"
+                "/gcc13.3.0/include/**",
+                "/usr/include/**"
             ],
             "defines": [],
             "compilerPath": "/gcc13.3.0/bin/g++",

@@ -35,7 +35,8 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/bin/${fileBasenameNoExtension}"
+                "${fileDirname}/bin/${fileBasenameNoExtension}",
+                "-I/usr/include/eigen3/Eigen/**"
             ],
             "options": {
                 "cwd": "${fileDirname}"
