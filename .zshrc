@@ -4,10 +4,24 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+#为gcc13.3.0设置了环境变量
 export PATH=/gcc13.3.0/bin:$PATH
+
+#为gcc13.3.0设置了库文件的环境变量
 export LD_LIBRARY_PATH=/gcc13.3.0/lib64:$LD_LIBRARY_PATH
 
+#为eigen3创建预处理C/C++代码时的头文件搜索路径
 export CPATH=/usr/include/eigen3:$CPATH
+
+#为mdspan创建预处理C/C++代码时的头文件搜索路径
+export CPATH=$HOME/mdspan/include:$CPATH
+
+#为boost设置头文件搜索路径
+export CPATH=/boost/boost_1_86_0:$CPATH
+
+#为boost设置库文件的环境变量
+export LD_LIBRARY_PATH=/boost/boost_1_86_0/stage/lib:$LD_LIBRARY_PATH
+
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,

@@ -36,7 +36,9 @@
                 "${file}",
                 "-o",
                 "${fileDirname}/bin/${fileBasenameNoExtension}",
-                "-I/usr/include/eigen3/Eigen/**"
+                "-I/usr/include/eigen3/Eigen/**",
+                "-I/home/diketene/mdspan/include/**",
+                "-I/boost/boost_1_86_0/**"
             ],
             "options": {
                 "cwd": "${fileDirname}"

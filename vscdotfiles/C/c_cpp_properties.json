@@ -4,6 +4,7 @@
             "name": "Linux C",
             "includePath": [
                 "${workspaceFolder}/**",
+                "${workspaceFolder}/modules",
                 "/usr/include"
             ],
             "defines": [],
@@ -16,7 +17,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "/gcc13.3.0/include/**",
-                "/usr/include/**"
+                "/usr/include/**",
+                "/boost/boost_1_86_0/**"
             ],
             "defines": [],
             "compilerPath": "/gcc13.3.0/bin/g++",
