@@ -22,6 +22,25 @@ export CPATH=/boost/boost_1_86_0:$CPATH
 #为boost设置库文件的环境变量
 export LD_LIBRARY_PATH=/boost/boost_1_86_0/stage/lib:$LD_LIBRARY_PATH
 
+#设置conda的环境变量
+__conda_setup="$('/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+#为libcint创建头文件搜索路径
+export CPATH=/usr/local/include:$CPATH
+
+#为libcint创建库文件环境变量
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+#
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -152,21 +171,6 @@ source /home/diketene/.config/broot/launcher/bash/br
 #为broot创建一个方便的关键词
 alias br='broot'
 
-#!/usr/bin/env zsh
-macro(){
-
-    macro_dir=$(pwd)
-    echo "We are now in $(pwd)"
-}
-
-polo(){
-    if [ -z "$macro_dir" ]; then
-        echo "We don't konw which previous woking directory you meant for, use macro first."
-    else
-        cd "$macro_dir"
-        echo "Now we are in the previous directory."
-    fi
-}
 
 #为mv -i创建一个方便的别名，使mv操作更安全
 alias mv="mv -i"
