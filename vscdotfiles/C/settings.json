@@ -1,4 +1,7 @@
  {
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "clangd.path":"clangd",
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
     "code-runner.executorMap": {
         "javascript": "node",
         "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
@@ -134,6 +137,30 @@
         "semaphore": "cpp",
         "stop_token": "cpp",
         "thread": "cpp",
-        "core": "cpp"
+        "core": "cpp",
+        "csetjmp": "cpp",
+        "csignal": "cpp",
+        "*.ipp": "cpp",
+        "any": "cpp",
+        "strstream": "cpp",
+        "bitset": "cpp",
+        "cfenv": "cpp",
+        "codecvt": "cpp",
+        "condition_variable": "cpp",
+        "coroutine": "cpp",
+        "forward_list": "cpp",
+        "unordered_set": "cpp",
+        "regex": "cpp",
+        "source_location": "cpp",
+        "rope": "cpp",
+        "slist": "cpp",
+        "fstream": "cpp",
+        "future": "cpp",
+        "mutex": "cpp",
+        "ranges": "cpp",
+        "shared_mutex": "cpp",
+        "stdfloat": "cpp",
+        "typeindex": "cpp",
+        "valarray": "cpp"
     }
  }
