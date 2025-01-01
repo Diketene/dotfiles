@@ -1,0 +1,9 @@
+CompileFlags:
+  Add: [
+    "-std=c++20",
+    "-I/usr/local/clang/lib/clang/20/include",
+    "-I/usr/local/clang/include/c++/v1",
+    "-stdlib=libc++",
+    "-L/usr/local/clang/lib",
+    "-Wl,-rpath,/usr/local/clang/lib"
+  ]

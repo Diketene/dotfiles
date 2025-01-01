@@ -1,7 +1,10 @@
  {
     "C_Cpp.intelliSenseEngine": "disabled",
-    "clangd.path":"clangd",
+    "clangd.path":"/usr/local/clang/bin/clangd",
     "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+    "clangd.arguments": [
+        "--enable-config"
+    ],
     "code-runner.executorMap": {
         "javascript": "node",
         "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",

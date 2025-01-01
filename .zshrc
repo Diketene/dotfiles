@@ -4,10 +4,16 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-#为gcc13.3.0设置了环境变量
+#clang的环境变量
+export PATH=/usr/local/clang/bin:$PATH
+
+#clang库文件的环境变量
+export LD_LIBRARY_PATH=/usr/local/clang/lib/x86_64-unknown-linux-gnu/:$LD_LIBRARY_PATH
+
+#gcc13.3.0的环境变量
 export PATH=/gcc13.3.0/bin:$PATH
 
-#为gcc13.3.0设置了库文件的环境变量
+#gcc13.3.0库文件的环境变量
 export LD_LIBRARY_PATH=/gcc13.3.0/lib64:$LD_LIBRARY_PATH
 
 #为eigen3创建预处理C/C++代码时的头文件搜索路径
