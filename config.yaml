@@ -1,3 +1,5 @@
+If:
+  PathMatch: [.*\.cpp, .*\.cxx, .*\.cc, .*\.h, .*\.hpp]
 CompileFlags:
   Add: [
     "-std=c++20",
@@ -6,4 +8,13 @@ CompileFlags:
     "-stdlib=libc++",
     "-L/usr/local/clang/lib",
     "-Wl,-rpath,/usr/local/clang/lib"
+  ]
+
+---
+
+If:
+  PathMatch: [.*\.c]
+CompileFlags:
+  Add: [
+    "-std=c17"
   ]
