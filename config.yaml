@@ -2,12 +2,13 @@ If:
   PathMatch: [.*\.cpp, .*\.cxx, .*\.cc, .*\.h, .*\.hpp]
 CompileFlags:
   Add: [
-    "-std=c++20",
+    "-std=c++23",
     "-I/usr/local/clang/lib/clang/20/include",
     "-I/usr/local/clang/include/c++/v1",
     "-stdlib=libc++",
     "-L/usr/local/clang/lib",
-    "-Wl,-rpath,/usr/local/clang/lib"
+    "-Wl,-rpath,/usr/local/clang/lib",
+    "-fmodule-file=std=/usr/local/clang/share/libc++/v1/std.pcm"
   ]
 
 ---
