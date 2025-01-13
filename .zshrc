@@ -34,8 +34,14 @@ export PATH=/usr/local/cmake/cmake-3.31.4-linux-x86_64/bin:$PATH
 #.NET环境变量
 export PATH=$HOME/.dotnet:$PATH
 
+#OpenMPI环境变量
+export PATH=/usr/local/openmpi/bin:$PATH
+
+export LD_LIBRARY_PATH=/usr/local/openmpi/lib:$LD_LIBRARY_PATH
+
 #设置conda的环境变量
-__conda_setup="$('/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+
+__conda_setup="$('/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)" 
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
