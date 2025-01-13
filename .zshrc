@@ -31,6 +31,9 @@ export LD_LIBRARY_PATH=/boost/boost_1_86_0/stage/lib:$LD_LIBRARY_PATH
 #CMake-3.31.4的环境变量
 export PATH=/usr/local/cmake/cmake-3.31.4-linux-x86_64/bin:$PATH
 
+#.NET环境变量
+export PATH=$HOME/.dotnet:$PATH
+
 #设置conda的环境变量
 __conda_setup="$('/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
