@@ -17,7 +17,7 @@ export PATH=/gcc13.3.0/bin:$PATH
 export LD_LIBRARY_PATH=/gcc13.3.0/lib64:$LD_LIBRARY_PATH
 
 #为eigen3创建预处理C/C++代码时的头文件搜索路径
-export CPATH=/usr/include/eigen3:$CPATH
+export CPATH=/usr/local/eigen/include/eigen3:$CPATH
 
 #为mdspan创建预处理C/C++代码时的头文件搜索路径
 export CPATH=$HOME/mdspan/include:$CPATH
