@@ -1,0 +1,8 @@
+{
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "clangd.path":"/usr/local/clang/bin/clangd",
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+    "clangd.arguments": [
+        "--enable-config"
+    ]
+}
