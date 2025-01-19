@@ -4,6 +4,12 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+#cuda的环境变量
+export PATH=/usr/local/cuda/bin:$PATH
+
+#cuda库文件的环境变量
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64/:$LD_LIBRARY_PATH
+
 #clang的环境变量
 export PATH=/usr/local/clang/bin:$PATH
 

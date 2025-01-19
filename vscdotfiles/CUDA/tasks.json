@@ -1,0 +1,19 @@
+{
+   "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "nvcc: 活动生成文件(launch)",
+            "type": "shell",
+            "command": "nvcc",
+            "args": [
+                "-ccbin",
+                "/gcc13.3.0/bin/g++",
+                "-g",
+                "-G",
+                "-o",
+                "${fileDirname}/bin/${fileBasenameNoExtension}",
+                "${file}"
+            ]
+        }
+    ]
+}
