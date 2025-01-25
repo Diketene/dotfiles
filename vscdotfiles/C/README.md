@@ -28,7 +28,7 @@ cmake -G Ninja \
 -DLIBOMPTARGET_NVPTX_COMPUTE_CAPABILITIES=89
 ```
 
-其中指定了clang对OpenMP和CUDA的支持，并指定了CUDA在本平台的架构。在编译之前还应当设置交换空间，避免编译时因内存不足而崩溃的问题：
+使用的CMake版本为3.31.4。其中指定了clang对OpenMP和CUDA的支持，并指定了CUDA在本平台的架构。在编译之前还应当设置交换空间，避免编译时因内存不足而崩溃的问题：
 
 ```bash
 sudo fallocate -l 60G /swapfile \
