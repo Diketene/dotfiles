@@ -45,6 +45,8 @@ export PATH=/usr/local/openmpi/bin:$PATH
 
 export LD_LIBRARY_PATH=/usr/local/openmpi/lib:$LD_LIBRARY_PATH
 
+export CPATH=/usr/local/openmpi/include:$CPATH
+
 #设置conda的环境变量
 
 __conda_setup="$('/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)" 
