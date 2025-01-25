@@ -1,6 +1,6 @@
 **clang的编译：**
 
-在llvm-peoject文件夹中：
+在llvm-project文件夹中：
 ```bash
 mkdir build
 ```
