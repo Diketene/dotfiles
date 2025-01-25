@@ -19,7 +19,17 @@ cmake -G Ninja \
 -DLIBOMPTARGET_NVPTX_COMPUTE_CAPABILITIES=89
 ```
 
-其中指定了clang对OpenMP和CUDA的支持.
+其中指定了clang对OpenMP和CUDA的支持，并指定了CUDA在本平台的架构。在编译之前还应当设置交换空间，避免编译时因内存不足而崩溃的问题：
+
+```bash
+sudo fallocate -l 60G /swapfile \
+sudo chmod 600 /swapfile \
+sudo mkswap /swapfile \
+sudo swapon /swapfile \
+sudo sysctl vm.swappiness=100
+```
+
+clang的编译占用内存较大，因此为其分配了60G的交换空间。
 
 编译clang20的std模块：
 
@@ -27,4 +37,4 @@ cmake -G Ninja \
 clang++ -std=c++23 -stdlib=libc++  -fopenmp   -Wno-reserved-identifier -Wno-reserved-module-identifier     --precompile -o std.pcm /usr/local/clang/share/libc++/v1/std.cppm
 ```
 
-std.compat模块同理.
+std.compat模块同理。
