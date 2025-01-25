@@ -1,4 +1,4 @@
-clang的编译：
+**clang的编译：**
 
 在llvm-peoject文件夹中：
 ```bash
@@ -40,7 +40,7 @@ sudo sysctl vm.swappiness=100
 
 clang的编译占用内存较大，因此为其分配了60G的交换空间。
 
-编译clang20的std模块：
+**编译clang20的std模块：**
 
 ```bash
 clang++ -std=c++23 -stdlib=libc++  -fopenmp   -Wno-reserved-identifier -Wno-reserved-module-identifier     --precompile -o std.pcm /usr/local/clang/share/libc++/v1/std.cppm
