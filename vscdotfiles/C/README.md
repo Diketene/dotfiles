@@ -1,5 +1,14 @@
 clang的编译：
 
+在llvm-peoject文件夹中：
+```bash
+mkdir build
+```
+
+```bash
+cd build
+```
+
 ```bash
 cmake -G Ninja \
 -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lld;polly" \
