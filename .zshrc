@@ -4,6 +4,11 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+#libcint的环境变量
+export CPATH=/usr/local/cint/include:$CPATH
+
+export LD_LIBRARY_PATH=/usr/local/cint/lib:$LD_LIBRARY_PATH
+
 #cuda的环境变量
 export PATH=/usr/local/cuda/bin:$PATH
 
@@ -60,13 +65,6 @@ else
     fi
 fi
 unset __conda_setup
-
-#为libcint创建头文件搜索路径
-export CPATH=/usr/local/include:$CPATH
-
-#为libcint创建库文件环境变量
-export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-#
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,

@@ -4,17 +4,17 @@
         {
             "type": "cppbuild",
             "label": "C: gcc 生成活动文件",
-            "command": "/usr/bin/gcc",
+            "command": "/usr/local/clang/bin/clang",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
                 "-lm",
+                "-lcint",
                 "-o",
                 "${fileDirname}/bin/${fileBasenameNoExtension}",
-                "-llapacke",
-                "-llapack",
-                "-lblas"
+                "-I/usr/local/cint/include",
+                "-L/usr/local/cint/lib"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -39,7 +39,8 @@
                 "-I/usr/local/eigen/include/eigen3/Eigen/**",
                 "-I/home/diketene/mdspan/include/**",
                 "-I/boost/boost_1_86_0/**",
-                "-I/usr/local/include"
+                "-I/usr/local/cint/include",
+                "-L/usr/local/cint/lib"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -67,7 +68,8 @@
                 "-I/usr/local/eigen/include/eigen3/Eigen/**",
                 "-I/home/diketene/mdspan/include/**",
                 "-I/boost/boost_1_86_0/**",
-                "-I/usr/local/include"
+                "-I/usr/local/cint/include",
+                "-L/usr/local/cint/lib"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -89,7 +91,9 @@
                 "-std=c++23",
                 "-stdlib=libc++",
                 "-fcolor-diagnostics",
+                "-fopenmp",
                 "-fmodule-file=std=/usr/local/clang/share/libc++/v1/std.pcm",
+                "-lcint",
                 "-g",
                 "-o",
                 "${fileDirname}/bin/${fileBasenameNoExtension}",
@@ -99,7 +103,8 @@
                 "-I/usr/local/eigen/include/eigen3/Eigen/**",
                 "-I/home/diketene/mdspan/include/**",
                 "-I/boost/boost_1_86_0/**",
-                "-I/usr/local/include",
+                "-I/usr/local/cint/include",
+                "-L/usr/local/cint/lib",
                 "-L/usr/local/clang/lib/x86_64-unknown-linux-gnu/**"
             ],
             "options": {
@@ -132,7 +137,8 @@
                 "-I/usr/local/eigen/include/eigen3/Eigen/**",
                 "-I/home/diketene/mdspan/include/**",
                 "-I/boost/boost_1_86_0/**",
-                "-I/usr/local/include",
+                "-I/usr/local/cint/include",
+                "-L/usr/local/cint/lib",
                 "-L/usr/local/clang/lib/x86_64-unknown-linux-gnu/**"
             ],
             "options": {
