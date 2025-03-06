@@ -107,7 +107,7 @@ clang++ -nostdinc++ -nostdinc \
 		-std=c++23 \
 		-stdlib=libc++ \
 		-isystem /public/home/zhangt/lht/custom-toolchain/clang21/stage1/include/c++/v1 \ #libc++库文件路径
-		-isystem /public/home/zhangt/lht/custom-toolchain/clang21/stage1/include/x86_64-unknown-linux-gnu/c++/v1 \ #\<__config_site\>路径
+		-isystem /public/home/zhangt/lht/custom-toolchain/clang21/stage1/include/x86_64-unknown-linux-gnu/c++/v1 \ #<__config_site>路径
 		-isystem /public/home/zhangt/lht/custom-toolchain/clang21/stage1/lib/clang/21/include \  #clang内部头文件路径
 		-isystem /usr/include \  #系统C标准库文件
 		-lc++ -lc++abi \
@@ -119,7 +119,10 @@ clang++ -nostdinc++ -nostdinc \
 **3.编译clang20的std模块：**
 
 ```bash
-clang++ -std=c++23 -stdlib=libc++  -fopenmp   -Wno-reserved-identifier -Wno-reserved-module-identifier     --precompile -o std.pcm /usr/local/clang/share/libc++/v1/std.cppm
+clang++ -std=c++23 -stdlib=libc++ \
+		-fopenmp  \
+		-Wno-reserved-identifier -Wno-reserved-module-identifier \
+		--precompile -o std.pcm /usr/local/clang/share/libc++/v1/std.cppm
 ```
 
 std.compat模块同理。
