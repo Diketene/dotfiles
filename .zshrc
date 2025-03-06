@@ -17,7 +17,6 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64/:$LD_LIBRARY_PATH
 
 #clang的环境变量
 export PATH=/usr/local/clang/bin:$PATH
-
 #clang库文件的环境变量
 export LD_LIBRARY_PATH=/usr/local/clang/lib/x86_64-unknown-linux-gnu/:$LD_LIBRARY_PATH
 
