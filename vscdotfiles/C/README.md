@@ -40,6 +40,8 @@ sudo sysctl vm.swappiness=100
 
 clang的编译占用内存较大，因此为其分配了60G的交换空间。
 
+使用ldd作为链接器比ld的内存占用要小得多。除此之外，以这种方式构建的clang不依赖于构建llvm项目时构建的运行时库libcxx,而直接依赖于gcc的标准库libstdc++。
+
 **编译clang20的std模块：**
 
 ```bash
