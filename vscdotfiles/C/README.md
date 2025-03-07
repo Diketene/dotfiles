@@ -25,7 +25,7 @@ cmake 	-G Ninja \
 		../llvm
 ```
 
-在以上过程中除了构建clang之外，还构建了openmp、lld、polly以及CUDA的clang前端，并指定了CUDA在本平台的架构（即sm_89）。使用的CMake版本为3.31.4。如果使用gold和ld作为链接器，在编译之前还应当设置交换空间，避免编译时因内存不足而崩溃的问题：
+在以上过程中除了构建clang之外，还构建了openmp、lld、polly以及CUDA的clang前端，并指定了CUDA在本平台的架构（即sm_89）。这些配置不是编译clang所必需的，必需的目标项目只有clang，而必需的运行时项目有libcxx、libcxxabi和libunwind。使用的CMake版本为3.31.4。如果使用gold和ld作为链接器，在编译之前还应当设置交换空间，避免编译时因内存不足而崩溃的问题：
 
 ```bash
 sudo fallocate -l 60G /swapfile \
