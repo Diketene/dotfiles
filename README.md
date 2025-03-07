@@ -9,3 +9,5 @@ Hello! Here are dotfiles of my linux, many basic dotfiles are setted to make my 
 **config**: Dotfile of ssh.
 
 **.tmux.conf**: Dotfile of tmux.
+
+[build of llvm](./vscdotfiles/C/README.md)
