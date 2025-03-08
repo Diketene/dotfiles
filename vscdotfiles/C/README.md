@@ -114,8 +114,6 @@ clang++ -nostdinc++ -nostdinc \
 		-o hello hello.cpp  #./hello => Hello, world!
 ```
 
-下一步，笔者将探索用构建好的这个clang编译器实现llvm项目的自举，在第二阶段实现用此编译器构建llvm工具链，并在第三阶段用第二阶段构建的工具链构建llvm工具链。
-
 在第二步中 ，我们将使用第一阶段编译出的clang和运行时库libc++、libc++abi进行llvm提供的整个工具链进行较为完整的llvm生态的构建。
 利用刚才我们给出的在去除了大部分系统环境变量的条件下clang++编译C++程序的参数，可以编写构建脚本如下：
 
