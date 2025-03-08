@@ -116,6 +116,88 @@ clang++ -nostdinc++ -nostdinc \
 
 下一步，笔者将探索用构建好的这个clang编译器实现llvm项目的自举，在第二阶段实现用此编译器构建llvm工具链，并在第三阶段用第二阶段构建的工具链构建llvm工具链。
 
+在第二步中 ，我们将使用第一阶段编译出的clang和运行时库libc++、libc++abi进行llvm提供的整个工具链进行较为完整的llvm生态的构建，这一步的缺点是构建出的clang依然依赖了libgcc_s.so.1，而没有依赖libunwind，我们将在第三步解决这一问题。
+利用刚才我们给出的在去除了大部分系统环境变量的条件下clang++编译C++程序的参数，可以编写构建脚本如下：
+
+```bash
+#!/bin/bash
+set -e
+
+unset CPATH
+unset CPLUS_INCLUDE_PATH
+unset C_INCLUDE_PATH
+unset LD_LIBRARY_PATH
+
+export LD_LIBRARY_PATH=/public/software/compiler/gcc-12.1.0/lib64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/public/home/zhangt/lht/custom-toolchain/clang21/stage1/lib/x86_64-unknown-linux-gnu:$LD_LIBRARY_PATH
+source /public/home/zhangt/lht/env.sh
+
+mkdir -p build_stage2 && cd build_stage2
+
+cmake	-G Ninja \
+	-D LLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lld" \
+	-D LLVM_ENABLE_RUNTIMES="compiler-rt;libcxx;libcxxabi;libunwind;openmp" \
+	-D CMAKE_BUILD_TYPE=Release \
+	-D CMAKE_INSTALL_PREFIX=/public/home/zhangt/lht/custom-toolchain/clang21/stage2 \
+	-D CMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+	-D CMAKE_INSTALL_RPATH="\$ORIGIN/../lib" \
+	-D CMAKE_C_COMPILER=/public/home/zhangt/lht/custom-toolchain/clang21/stage1/bin/clang \
+	-D CMAKE_CXX_COMPILER=/public/home/zhangt/lht/custom-toolchain/clang21/stage1/bin/clang++ \
+	-D LLVM_USE_LINKER=lld \
+	-D CLANG_INCLUDE_TESTS=OFF \
+	-D LIBCXX_INSTALL_MODULES=ON \
+	-D CMAKE_C_FLAGS="-fPIC \
+			  -isystem /public/home/zhangt/lht/custom-toolchain/clang21/stage1/lib/clang/21/include" \
+	-D CMAKE_CXX_FLAGS="-fPIC \
+			    -nostdlib++ \
+			    -nostdinc++ \
+			    -isystem /public/home/zhangt/lht/custom-toolchain/clang21/stage1/include/c++/v1 \
+			    -isystem /public/home/zhangt/lht/custom-toolchain/clang21/stage1/include/x86_64-unknown-linux-gnu/c++/v1 \
+			    -isystem /public/home/zhangt/lht/custom-toolchain/clang21/stage1/lib/clang/21/include \
+			    -isystem /usr/include " \
+	-D CMAKE_SHARED_LINKER_FLAGS="-L/public/home/zhangt/lht/custom-toolchain/clang21/stage1/lib/x86_64-unknown-linux-gnu \
+				      -Wl,-rpath,/public/home/zhangt/lht/custom-toolchain/clang21/stage1/lib/x86_64-unknown-linux-gnu \
+				      -lc++ -lc++abi"\
+	-D CMAKE_EXE_LINKER_FLAGS="-L/public/home/zhangt/lht/custom-toolchain/clang21/stage1/lib/x86_64-unknown-linux-gnu \
+				   -Wl,-rpath,/public/home/zhangt/lht/custom-toolchain/clang21/stage1/lib/x86_64-unknown-linux-gnu \
+				   -lc++ -lc++abi"\
+	-D CMAKE_CXX_STANDARD_LIBRARIES="-stdlib=libc++ -lc++ -lc++abi" \
+	-D LIBCXX_HAS_GCC_S_LIB=OFF \
+	-D LIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF \
+	-D LIBCXX_CXX_ABI=libcxxabi \
+	-D LIBCXXABI_USE_LLVM_UNWINDER=ON \
+	-D LIBCXXABI_ENABLE_SHARED=ON \
+	-D LIBUNWIND_ENABLE_SHARED=ON \
+	-D CLANG_DEFAULT_RTLIB=compiler-rt \
+	-D LIBUNWIND_USE_COMPILER_RT=ON \
+	-D COMPILER_RT_USE_BUILTINS_LIBRARY=ON \
+	-D CLANG_DEFAULT_UNWINDLIB=libunwind \
+	../llvm
+
+ninja -j$(nproc) && ninja install
+```
+需要注意的是必须要在CMAKE_C_FLAGS和CMAKE_CXX_FLAGS中显式设定编译参数-fPIC，不然会导致编译失败。在构建之后，笔者使用ldd进行了验证：
+
+```bash
+ldd ./clang 
+        linux-vdso.so.1 =>  (0x00007fff39da3000)
+        /usr/local/lib/libdecrypt.so (0x00002b8d53f28000)
+        libc++.so.1 => /public/home/zhangt/lht/custom-toolchain/clang21/stage1/lib/x86_64-unknown-linux-gnu/libc++.so.1 (0x00002b8d49bc4000)
+        libc++abi.so.1 => /public/home/zhangt/lht/custom-toolchain/clang21/stage1/lib/x86_64-unknown-linux-gnu/libc++abi.so.1 (0x00002b8d49cd2000)
+        libpthread.so.0 => /lib64/libpthread.so.0 (0x00002b8d5412b000)
+        librt.so.1 => /lib64/librt.so.1 (0x00002b8d54347000)
+        libdl.so.2 => /lib64/libdl.so.2 (0x00002b8d5454f000)
+        libm.so.6 => /lib64/libm.so.6 (0x00002b8d54753000)
+        libz.so.1 => /lib64/libz.so.1 (0x00002b8d54a55000)
+        libgcc_s.so.1 => /public/software/compiler/gcc-12.1.0/lib64/libgcc_s.so.1 (0x00002b8d54c6b000)
+        libc.so.6 => /lib64/libc.so.6 (0x00002b8d54e89000)
+        /lib64/ld-linux-x86-64.so.2 (0x00002b8d49ba0000)
+        libunwind.so.1 => /public/home/zhangt/lht/custom-toolchain/clang21/stage1/lib/x86_64-unknown-linux-gnu/libunwind.so.1 (0x00002b8d49d4a000)
+```
+
+可以看到，clang现在已经不再依赖libstdc++，但仍依赖较为底层的libgcc_s.so.1，这可能是由于第一步构建的clang依赖了libgcc_s.so.1的缘故。对于这个问题，笔者尝试但未找到好的办法。
+对于第三步的编译，只需要将工具链换为第二步编译出的这些工具链即可，由于在实践意义上没有什么价值，笔者将其略去。
+
 **3.编译clang20的std模块：**
 
 ```bash
