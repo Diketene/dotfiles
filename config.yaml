@@ -17,7 +17,13 @@ If:
   PathMatch: [.*\.c]
 CompileFlags:
   Add: [
-    "-std=c17"
+    "-std=c17",
+    "-I/usr/local/clang/lib/clang/20/include",
+    "-I/usr/local/clang/include/c++/v1",
+    "-I/usr/local/clang/include/x86_64-unknown-linux-gnu/c++/v1",
+    "-stdlib=libc++",
+    "-L/usr/local/clang/lib",
+    "-Wl,-rpath,/usr/local/clang/lib"
   ]
 
 ---
