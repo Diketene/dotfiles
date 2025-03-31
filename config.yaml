@@ -6,8 +6,6 @@ CompileFlags:
     "-I/usr/local/clang/lib/clang/20/include",
     "-I/usr/local/clang/include/c++/v1",
     "-stdlib=libc++",
-    "-L/usr/local/clang/lib",
-    "-Wl,-rpath,/usr/local/clang/lib",
     "-fmodule-file=std=/usr/local/clang/share/libc++/v1/std.pcm"
   ]
 
@@ -21,9 +19,7 @@ CompileFlags:
     "-I/usr/local/clang/lib/clang/20/include",
     "-I/usr/local/clang/include/c++/v1",
     "-I/usr/local/clang/include/x86_64-unknown-linux-gnu/c++/v1",
-    "-stdlib=libc++",
-    "-L/usr/local/clang/lib",
-    "-Wl,-rpath,/usr/local/clang/lib"
+    "-stdlib=libc++"
   ]
 
 ---
@@ -36,7 +32,5 @@ CompileFlags:
     "--cuda-path=/usr/local/cuda",
     "-I/usr/local/clang/lib/clang/20/include",
     "-I/usr/local/clang/include/c++/v1",
-    "-stdlib=libc++",
-    "-L/usr/local/clang/lib",
-    "-Wl,-rpath,/usr/local/clang/lib"
+    "-stdlib=libc++"
   ]
