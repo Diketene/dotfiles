@@ -4,7 +4,7 @@ Hello! Here are dotfiles of my linux, many basic dotfiles are setted to make my 
 
 **vscdotfiles**: Dotfiles for my VSCode, which contains dotfiles of C/C++ and CUDA.
 
-**config.yaml**: Dotfile of clangd.
+**config.yaml**: Dotfile of clangd(global configurations).
 
 **config**: Dotfile of ssh.
 
