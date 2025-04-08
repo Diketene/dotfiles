@@ -29,9 +29,6 @@ export LD_LIBRARY_PATH=/gcc13.3.0/lib64:$LD_LIBRARY_PATH
 #为eigen3创建预处理C/C++代码时的头文件搜索路径
 export CPATH=/usr/local/eigen/include/eigen3:$CPATH
 
-#为mdspan创建预处理C/C++代码时的头文件搜索路径
-export CPATH=$HOME/mdspan/include:$CPATH
-
 #为boost设置头文件搜索路径
 export CPATH=/boost/boost_1_86_0:$CPATH
 
@@ -56,6 +53,14 @@ export PATH=/home/diketene/.local/bin:$PATH
 
 #valgrind
 export PATH=/usr/local/valgrind/bin:$PATH
+
+#oneapi-mkl
+export LD_LIBRARY_PATH=/opt/intel/oneapi/mkl/latest/lib:$LD_LIBRARY_PATH
+
+#OpenBLAS
+export CPATH=/usr/local/OpenBLAS/include/openblas:$CPATH
+
+export LD_LIBRARY_PATH=/usr/local/OpenBLAS/lib:$LD_LIBRARY_PATH
 
 #设置conda的环境变量
 
@@ -191,7 +196,7 @@ function fzf-history-widget() {
 }
 zle -N fzf-history-widget
 
-#添加rustup为环境变量
+#添加cargo包管理的环境变量
 export PATH="$HOME/.cargo/bin:$PATH"
 
 #broot安装的一个shell函数
@@ -209,5 +214,14 @@ if ! pgrep -u "$USER" ssh-agent > /dev/null; then
      eval "$(ssh-agent -s)"
 fi
 
+#将终端默认模式设置为vim模式
+bindkey -v
 
-
+export KEYTIMEOUT=1  # 缩短模式切换延迟
+function zle-line-init zle-keymap-select {
+  RPS1="${${KEYMAP/vicmd/NORMAL}/(main|viins)/INSERT}"
+  RPS2=$RPS1
+  zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
