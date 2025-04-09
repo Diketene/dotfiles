@@ -62,8 +62,12 @@ export CPATH=/usr/local/OpenBLAS/include/openblas:$CPATH
 
 export LD_LIBRARY_PATH=/usr/local/OpenBLAS/lib:$LD_LIBRARY_PATH
 
-#设置conda的环境变量
+#googletest
+export CPATH=/usr/local/gtest/include/:$CPATH
 
+export LD_LIBRARY_PATH=/usr/local/gtest/lib:$LD_LIBRARY_PATH
+
+#设置conda的环境变量
 __conda_setup="$('/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)" 
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
@@ -205,7 +209,6 @@ source /home/diketene/.config/broot/launcher/bash/br
 #为broot创建一个方便的关键词
 alias br='broot'
 
-
 #为mv -i创建一个方便的别名，使mv操作更安全
 alias mv="mv -i"
 
@@ -219,7 +222,7 @@ bindkey -v
 
 export KEYTIMEOUT=1  # 缩短模式切换延迟
 function zle-line-init zle-keymap-select {
-  RPS1="${${KEYMAP/vicmd/NORMAL}/(main|viins)/INSERT}"
+  RPS1="${${KEYMAP/vicmd/NOR}/(main|viins)/INS}"
   RPS2=$RPS1
   zle reset-prompt
 }
