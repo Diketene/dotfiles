@@ -185,21 +185,6 @@ source $ZSH/oh-my-zsh.sh
 #为fdfind创建一个方便的关键词
 alias fd='fdfind'
 
-# 绑定 Ctrl+R 到 fzf 历史命令搜索
-bindkey '^R' fzf-history-widget
-
-function fzf-history-widget() {
-    LBUFFER+="$(fc -l 1 | fzf --tac --query=${LBUFFER})"
-    local ret=$?
-    if [ $ret -eq 1 ]; then
-        zle redisplay
-    elif [ $ret -eq 0 ]; then
-        zle .kill-whole-line
-    fi
-    zle clear-screen
-}
-zle -N fzf-history-widget
-
 #添加cargo包管理的环境变量
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -228,3 +213,20 @@ function zle-line-init zle-keymap-select {
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
+
+# 绑定 Ctrl+R 到 fzf 历史命令搜索
+bindkey '^R' fzf-history-widget
+
+function fzf-history-widget() {
+    LBUFFER+="$(fc -l 1 | fzf --tac --query=${LBUFFER})"
+    local ret=$?
+    if [ $ret -eq 1 ]; then
+        zle redisplay
+    elif [ $ret -eq 0 ]; then
+        zle .kill-whole-line
+    fi
+    zle clear-screen
+}
+zle -N fzf-history-widget
+
+
