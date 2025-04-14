@@ -67,6 +67,18 @@ export CPATH=/usr/local/gtest/include/:$CPATH
 
 export LD_LIBRARY_PATH=/usr/local/gtest/lib:$LD_LIBRARY_PATH
 
+#kokkos
+export PATH=/usr/local/kokkos/bin:$PATH
+
+export CPATH=/usr/local/kokkos/include:$CPATH 
+
+#texlive
+export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
+
+export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
+
+export INFOPATH=/usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH
+
 #设置conda的环境变量
 __conda_setup="$('/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)" 
 if [ $? -eq 0 ]; then
