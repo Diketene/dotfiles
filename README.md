@@ -12,3 +12,35 @@ it also contains some guidelines for building LLVM.
 **.tmux.conf**: Dotfile of tmux.
 
 [build of LLVM](./vscdotfiles/C/README.md)(in Chinese)
+
+**After that was some of my expreriences about wsl2 itself**:
+
+1.It seems that it's hard to change the core dump default behavior of wsl if we want wsl executes our modified core dump settings as wsl begins its service. The default behavior is as followed:
+
+```bash
+$cat /proc/sys/kernel/core_pattern
+|/wsl-capture-crash %t %E %p %s
+```
+
+When we want to change the default behavior, it's widely known that we can use
+
+```bash
+if ! grep -qi 'kernel.core_pattern' /etc/sysctl.conf; then
+	sudo sh -c 'echo "kernel.core_pattern=core.%p.%u.%s.%e.%t" >> /etc/sysctl.conf'
+	sudo sysctl -p
+fi
+
+ulimit -c unlimited
+```
+
+to change the default behavior. In our modified behavior, we hope that the core dump files could be generated in the binary executing path with a more detailed filename. If we want to make it permanently, we can
+
+```bash
+sudo bash -c "cat << EOF > /etc/security/limits.conf
+* soft core unlimited
+* hard core unlimited
+EOF"
+```
+but in wsl, despite the above settings is set, when we reboot the wsl, it still behaves as its default behavior.
+
+So it's annoying that everytime when we want to debug our binary with our modified behavior as we firstly start wsl, we must execute `sudo sysctl -p` and `ulimit -c unlimited` repeatedly. Because it's not a severe problem, I decided not to figure out a solution of this problem.
