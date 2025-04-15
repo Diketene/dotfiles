@@ -41,6 +41,6 @@ sudo bash -c "cat << EOF > /etc/security/limits.conf
 * hard core unlimited
 EOF"
 ```
-but in wsl, despite the above settings is set, when we reboot the wsl, it still behaves as its default behavior.
+but in wsl, despite the above settings is set, when we reboot the wsl, it still behaves its default behavior.
 
 So it's annoying that everytime when we want to debug our binary with our modified behavior as we firstly start wsl, we must execute `sudo sysctl -p` and `ulimit -c unlimited` repeatedly. Because it's not a severe problem, I decided not to figure out a solution of this problem.
