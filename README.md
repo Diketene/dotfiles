@@ -13,9 +13,9 @@ it also contains some guidelines for building LLVM.
 
 [build of LLVM](./vscdotfiles/C/README.md)(in Chinese)
 
-**Here are some of my expreriences about wsl2 itself**:
+**Here are some of my expreriences about wsl2 itself**(could be seen as a memo of myself):
 
-1.It seems that it's hard to change the **core dump default behavior** of wsl if we want wsl executes our modified core dump settings as wsl begins its service. The default behavior is as followed:
+1. It seems that it's hard to change the **core dump default behavior** of wsl if we want wsl executes our modified core dump settings as wsl begins its service. The default behavior is as followed:
 
 ```bash
 $cat /proc/sys/kernel/core_pattern
@@ -44,3 +44,5 @@ EOF"
 but in wsl, despite the above settings is set, when we reboot the wsl, it still behaves its default behavior.
 
 So it's annoying that everytime when we want to debug our binary with our modified behavior as we firstly start wsl, we must execute `sudo sysctl -p` and `ulimit -c unlimited` repeatedly. But it's not a severe problem, so I decided not to figure out a solution of this problem.
+
+2. Although I cloned the latest wsl source code from github and compiled perf successfully, perf couldn't execute some performance analysis, which is put on hold.
