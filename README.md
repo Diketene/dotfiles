@@ -13,16 +13,16 @@ it also contains some guidelines for building LLVM.
 
 [build of LLVM](./vscdotfiles/C/README.md)(in Chinese)
 
-**After that was some of my expreriences about wsl2 itself**:
+**Here are some of my expreriences about wsl2 itself**:
 
-1.It seems that it's hard to change the core dump default behavior of wsl if we want wsl executes our modified core dump settings as wsl begins its service. The default behavior is as followed:
+1.It seems that it's hard to change the **core dump default behavior** of wsl if we want wsl executes our modified core dump settings as wsl begins its service. The default behavior is as followed:
 
 ```bash
 $cat /proc/sys/kernel/core_pattern
 |/wsl-capture-crash %t %E %p %s
 ```
 
-When we want to change the default behavior, it's widely known that we can use
+When we want to change the default behavior, it's widely known that we can execute
 
 ```bash
 if ! grep -qi 'kernel.core_pattern' /etc/sysctl.conf; then
