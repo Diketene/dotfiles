@@ -4,17 +4,16 @@
         {
             "type": "cppbuild",
             "label": "C: gcc 生成活动文件",
-            "command": "/usr/local/clang/bin/clang",
+            "command": "clang",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
-                "-lm",
-                "-lcint",
                 "-o",
                 "${fileDirname}/bin/${fileBasenameNoExtension}",
-                "-I/usr/local/cint/include",
-                "-L/usr/local/cint/lib"
+                "-I/usr/local/openmpi/include",
+                "-L/usr/local/openmpi/lib",
+                "-lmpi"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -23,12 +22,12 @@
                 "$gcc"
             ],
             "group": "build",
-            "detail": "编译器: /usr/bin/gcc"
+            "detail": "编译器: /usr/local/clang/bin/clang"
         },
         {
             "type": "cppbuild",
             "label": "C++: g++ 生成活动文件",
-            "command": "/gcc13.3.0/bin/g++",
+            "command": "g++",
             "args": [
                 "-std=c++23",
                 "-fdiagnostics-color=always",
@@ -57,7 +56,7 @@
         {
             "type": "cppbuild",
             "label": "C++: g++ 生成活动文件(Released)",
-            "command": "/gcc13.3.0/bin/g++",
+            "command": "g++",
             "args": [
                 "-std=c++23",
                 "-fdiagnostics-color=always",
@@ -86,14 +85,12 @@
         {
             "type":"cppbuild",
             "label": "C++: Clang++ 生成活动文件",
-            "command": "/usr/local/clang/bin/clang++",
+            "command": "clang++",
             "args": [
                 "-std=c++23",
                 "-stdlib=libc++",
                 "-fcolor-diagnostics",
-                "-fopenmp",
                 "-fmodule-file=std=/usr/local/clang/share/libc++/v1/std.pcm",
-                "-lcint",
                 "-g",
                 "-o",
                 "${fileDirname}/bin/${fileBasenameNoExtension}",
@@ -101,7 +98,6 @@
                 "${file}",
                 "-I/usr/local/clang/include/**",
                 "-I/usr/local/eigen/include/eigen3/Eigen/**",
-                "-I/home/diketene/mdspan/include/**",
                 "-I/boost/boost_1_86_0/**",
                 "-I/usr/local/cint/include",
                 "-L/usr/local/cint/lib",
@@ -122,7 +118,7 @@
         {
             "type": "cppbuild",
             "label": "C++: Clang++生成活动文件(Released)",
-            "command": "/usr/local/clang/bin/clang++",
+            "command": "clang++",
             "args":[
                 "-std=c++23",
                 "-stdlib=libc++",
@@ -135,7 +131,6 @@
                 "${file}",
                 "-I/usr/local/clang/include/**",
                 "-I/usr/local/eigen/include/eigen3/Eigen/**",
-                "-I/home/diketene/mdspan/include/**",
                 "-I/boost/boost_1_86_0/**",
                 "-I/usr/local/cint/include",
                 "-L/usr/local/cint/lib",

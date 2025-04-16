@@ -92,6 +92,10 @@ else
 fi
 unset __conda_setup
 
+#ccache
+export PATH=/usr/local/ccache/bin:$PATH
+
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -196,6 +200,11 @@ source $ZSH/oh-my-zsh.sh
 
 #为fdfind创建一个方便的关键词
 alias fd='fdfind'
+
+#NJU-PA 
+export NEMU_HOME=/home/diketene/ics2024/nemu
+
+export AM_HOME=/home/diketene/ics2024/abstract-machine
 
 #添加cargo包管理的环境变量
 export PATH="$HOME/.cargo/bin:$PATH"
