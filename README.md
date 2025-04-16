@@ -17,7 +17,7 @@ it also contains some guidelines for building LLVM.
 
 1. **probelm about core dump behavior**
 
-	It seems that it's hard to change the core dump default behavior of wsl if we want wsl executes our modified core dump settings as wsl begins its service. The default behavior is as followed:
+It seems that it's hard to change the core dump default behavior of wsl if we want wsl executes our modified core dump settings as wsl begins its service. The default behavior is as followed:
 
 ```bash
 $cat /proc/sys/kernel/core_pattern
@@ -50,4 +50,4 @@ So it's annoying that everytime when we want to debug our binary with our modifi
 
 2. **problem about perf**
 
-	Although I cloned the latest wsl source code from github and compiled perf successfully, perf couldn't execute some performance analysis. This problem is put on hold provisionally. 
+Although I cloned the latest wsl source code from github and compiled perf successfully, perf couldn't execute some performance analysis. This problem is put on hold provisionally. 
