@@ -46,7 +46,7 @@ EOF"
 
 but in wsl, despite the above settings is set, when we reboot the wsl, it still behaves its default behavior.
 
-So it's annoying that everytime when we want to debug our binary with our modified behavior, if we firstly start wsl, we must execute `sudo sysctl -p` and `ulimit -c unlimited` repeatedly. But it is not a severe problem, so I decided not to figure out a solution of this problem.
+So it's annoying that everytime when we want to debug our binary with our modified behavior, if we start wsl and then wsl goes through its intialization, we must execute `sudo sysctl -p` and `ulimit -c unlimited` repeatedly after that. But it is not a severe problem, so I decided not to figure out a solution of this problem.
 
 2. **problem about perf**
 
