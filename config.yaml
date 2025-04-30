@@ -1,5 +1,5 @@
 If:
-  PathMatch: [.*\.cpp, .*\.cxx, .*\.cc, .*\.h, .*\.hpp, .*]
+  PathMatch: [.*\.cpp, .*\.cxx, .*\.cc, .*\.hpp, .*]
 CompileFlags:
   Add: [
     "-std=c++23",
@@ -12,7 +12,7 @@ CompileFlags:
 ---
 
 If:
-  PathMatch: [.*\.c]
+  PathMatch: [.*\.c, .*\.h]
 CompileFlags:
   Add: [
     "-std=c17",

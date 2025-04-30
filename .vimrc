@@ -32,3 +32,5 @@ nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR> " 用空格�
 
 map <C-m> :NERDTreeToggle<CR>
 set clipboard=unnamedplus
+set visualbell
+set t_vb=

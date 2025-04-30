@@ -17,23 +17,24 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64/:$LD_LIBRARY_PATH
 
 #clang的环境变量
 export PATH=/usr/local/clang/bin:$PATH
-#clang库文件的环境变量
+
 export LD_LIBRARY_PATH=/usr/local/clang/lib/x86_64-unknown-linux-gnu/:$LD_LIBRARY_PATH
+
+export CPATH=/usr/local/clang/include:$CPATH
 
 #gcc13.3.0的环境变量
 export PATH=/gcc13.3.0/bin:$PATH
 
-#gcc13.3.0库文件的环境变量
 export LD_LIBRARY_PATH=/gcc13.3.0/lib64:$LD_LIBRARY_PATH
 
 #为eigen3创建预处理C/C++代码时的头文件搜索路径
 export CPATH=/usr/local/eigen/include/eigen3:$CPATH
 
 #为boost设置头文件搜索路径
-export CPATH=/boost/boost_1_86_0:$CPATH
+export CPATH=/usr/local/boost/include/:$CPATH
 
 #为boost设置库文件的环境变量
-export LD_LIBRARY_PATH=/boost/boost_1_86_0/stage/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/boost/lib:$LD_LIBRARY_PATH
 
 #CMake-3.31.4的环境变量
 export PATH=/usr/local/cmake/cmake-3.31.4-linux-x86_64/bin:$PATH
@@ -79,21 +80,25 @@ export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
 
 export INFOPATH=/usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH
 
-#设置conda的环境变量
-__conda_setup="$('/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)" 
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+#imagemagick
+export PATH=/usr/local/imagemagick/bin/:$PATH
 
-#ccache
-export PATH=/usr/local/ccache/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/imagemagick/lib/:$LD_LIBRARY_PATH
+
+export CPATH=/usr/local/imagemagick/include/:$CPATH
+
+#设置conda的环境变量
+#__conda_setup="$('/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)" 
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "/anaconda3/etc/profile.d/conda.sh" ]; then
+#        . "/anaconda3/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/anaconda3/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
 
 
 # Set name of the theme to load --- if set to "random", it will
@@ -250,4 +255,4 @@ function fzf-history-widget() {
 }
 zle -N fzf-history-widget
 
-
+unsetopt beep
