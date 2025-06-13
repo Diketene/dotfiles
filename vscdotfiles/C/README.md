@@ -99,16 +99,13 @@ auto main(void) -> int{
 } //hello.cpp
 ```
 
-笔者发现，消除系统默认环境变量后为编译器传递如下参数，编译可以正常进行和结束：
+笔者发现，为clang++传递如下参数，编译可以正常进行和结束：
 
 ```bash
-unset CPATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH #消除系统默认环境变量
-clang++ -nostdinc++ -nostdinc \
-		-std=c++23 \
+clang++ -std=c++23 \
 		-stdlib=libc++ \
 		-isystem /public/home/zhangt/lht/custom-toolchain/clang21/stage1/include/c++/v1 \ #libc++库文件路径
 		-isystem /public/home/zhangt/lht/custom-toolchain/clang21/stage1/include/x86_64-unknown-linux-gnu/c++/v1 \ #<__config_site>路径
-		-isystem /public/home/zhangt/lht/custom-toolchain/clang21/stage1/lib/clang/21/include \  #clang内部头文件路径
 		-isystem /usr/include \  #系统C标准库文件
 		-lc++ -lc++abi \
 		-o hello hello.cpp  #./hello => Hello, world!

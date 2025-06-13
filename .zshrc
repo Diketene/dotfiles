@@ -12,20 +12,44 @@ export LD_LIBRARY_PATH=/usr/local/cint/lib:$LD_LIBRARY_PATH
 #cuda的环境变量
 export PATH=/usr/local/cuda/bin:$PATH
 
-#cuda库文件的环境变量
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64/:$LD_LIBRARY_PATH
 
-#clang的环境变量
+#llvm的环境变量
 export PATH=/usr/local/clang/bin:$PATH
 
 export LD_LIBRARY_PATH=/usr/local/clang/lib/x86_64-unknown-linux-gnu/:$LD_LIBRARY_PATH
 
+alias use_clang='
+unset CPLUS_INCLUDE_PATH
+
+export CC=clang
+
+export CXX=clang++
+
+export LIBRARY_PATH=/usr/local/clang/lib/x86_64-unknown-linux-gnu/:$LIBRARY_PATH
+
 export CPATH=/usr/local/clang/include:$CPATH
+
+export CPATH=/usr/local/clang/include/x86_64-unknown-linux-gnu/c++/v1:$CPATH
+
+export CPLUS_INCLUDE_PATH=/usr/local/clang/include/c++/v1:$CPLUS_INCLUDE_PATH'
 
 #gcc13.3.0的环境变量
 export PATH=/gcc13.3.0/bin:$PATH
 
 export LD_LIBRARY_PATH=/gcc13.3.0/lib64:$LD_LIBRARY_PATH
+
+alias use_gcc='
+
+unset CPLUS_INCLUDE_PATH
+
+export CC=gcc
+
+export CXX=g++
+
+export CPLUS_INCLUDE_PATH=/gcc13.3.0/include/c++/13.3.0:$CPLUS_INCLUDE_PATH
+
+export LIBRARY_PATH=/gcc13.3.0/lib64:$LIBRARY_PATH'
 
 #为eigen3创建预处理C/C++代码时的头文件搜索路径
 export CPATH=/usr/local/eigen/include/eigen3:$CPATH
@@ -88,17 +112,17 @@ export LD_LIBRARY_PATH=/usr/local/imagemagick/lib/:$LD_LIBRARY_PATH
 export CPATH=/usr/local/imagemagick/include/:$CPATH
 
 #设置conda的环境变量
-#__conda_setup="$('/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)" 
-#if [ $? -eq 0 ]; then
-#    eval "$__conda_setup"
-#else
-#    if [ -f "/anaconda3/etc/profile.d/conda.sh" ]; then
-#        . "/anaconda3/etc/profile.d/conda.sh"
-#    else
-#        export PATH="/anaconda3/bin:$PATH"
-#    fi
-#fi
-#unset __conda_setup
+__conda_setup="$('/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)" 
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
 
 
 # Set name of the theme to load --- if set to "random", it will
@@ -224,7 +248,7 @@ alias br='broot'
 alias mv="mv -i"
 
 #在打开zsh时即加载ssh-agent
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+if ! pgrep -u "$USER" -f "ssh-agent -s" > /dev/null; then
      eval "$(ssh-agent -s)"
 fi
 
@@ -255,4 +279,14 @@ function fzf-history-widget() {
 }
 zle -N fzf-history-widget
 
+#关闭提示音
 unsetopt beep
+
+#colorful man page
+export LESS_TERMCAP_mb=$'\E[01;34m'
+export LESS_TERMCAP_md=$'\E[01;34m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;33;44m'
+export LESS_TERMCAP_se=$'\E[0m'
