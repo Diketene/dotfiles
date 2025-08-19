@@ -1,0 +1,17 @@
+#%Module1.0
+##gcc-13.3.0
+
+module-whatis "gcc 13.3.0"
+
+set topdir "/gcc13.3.0"
+
+prepend-path PATH "${topdir}/bin"
+prepend-path LD_LIBRARY_PATH "${topdir}/lib64"
+prepend-path CPLUS_INCLUDE_PATH "${topdir}/include/c++/13.3.0"
+prepend-path MANPATH "${topdir}/share/man"
+
+setenv CC "${topdir}/bin/gcc"
+setenv CXX "${topdir}/bin/g++"
+setenv FC "${topdir}/bin/gfortran"
+
+

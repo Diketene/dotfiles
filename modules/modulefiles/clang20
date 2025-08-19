@@ -1,0 +1,18 @@
+#%Module1.0
+##clang-20
+
+module-whatis "clang 20"
+
+unsetenv CPLUS_INCLUDE_PATH
+
+set topdir "/usr/local/clang"
+
+prepend-path PATH									"${topdir}/bin"
+prepend-path CPLUS_INCLUDE_PATH		"${topdir}/include/c++/v1"
+prepend-path CPLUS_INCLUDE_PATH		"${topdir}/include/x86_64-unknown-linux-gnu/c++/v1"
+prepend-path LD_LIBRARY_PATH			"${topdir}/lib/x86_64-unknown-linux-gnu"
+prepend-path LIBRARY_PATH					"${topdir}/lib/x86_64-unknown-linux-gnu"
+prepend-path MANPATH							"${topdir}/share/man"
+
+setenv CC		"${topdir}/bin/clang"
+setenv CXX	"${topdir}/bin/clang++"
