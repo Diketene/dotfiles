@@ -4,10 +4,53 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+#Haskell
+export PATH=$HOME/.ghcup/bin/:$PATH
+
+#wigcpp
+export CPATH=/usr/local/wigcpp/include:$CPATH
+
+export LIBRARY_PATH=/usr/local/wigcpp/lib:$LIBRARY_PATH
+
+export LD_LIBRARY_PATH=/usr/local/wigcpp/lib:$LD_LIBRARY_PATH
+
+#wigxjpf
+export CPATH=/usr/local/wigxjpf/include:$CPATH
+
+export LIBRARY_PATH=/usr/local/wigxjpf/lib:$LIBRARY_PATH
+
+#oneTBB
+export CPATH=/opt/intel/oneapi/tbb/latest/include:$CPATH
+
+export LD_LIBRARY_PATH=/opt/intel/oneapi/tbb/latest/lib:$LD_LIBRARY_PATH
+
+export LIBRARY_PATH=/opt/intel/oneapi/tbb/latest/lib:$LIBRARY_PATH
+
+#libtorch
+export CPATH=/usr/local/libtorch/include:$CPATH
+
+export CPATH=/usr/local/libtorch/include/torch/csrc/api/include:$CPATH
+
+export LD_LIBRARY_PATH=/usr/local/libtorch/lib:$LD_LIBRARY_PATH
+
+export LIBRARY_PATH=/usr/local/libtorch/lib:$LIBRARY_PATH
+
 #libcint的环境变量
 export CPATH=/usr/local/cint/include:$CPATH
 
 export LD_LIBRARY_PATH=/usr/local/cint/lib:$LD_LIBRARY_PATH
+
+#xtl-0.8.0
+export CPATH=/usr/local/xtl/include:$CPATH
+
+#xtensor-0.26.0
+export CPATH=/usr/local/xtensor/include:$CPATH
+
+#xsimd-13.2.0
+export CPATH=/usr/local/xsimd/include:$CPATH
+
+#xtensor-blas-0.22.0
+export CPATH=/usr/local/xtensor-blas/include:$CPATH
 
 #cuda的环境变量
 export PATH=/usr/local/cuda/bin:$PATH
@@ -15,41 +58,41 @@ export PATH=/usr/local/cuda/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64/:$LD_LIBRARY_PATH
 
 #llvm的环境变量
-export PATH=/usr/local/clang/bin:$PATH
+#export PATH=/usr/local/clang/bin:$PATH
 
-export LD_LIBRARY_PATH=/usr/local/clang/lib/x86_64-unknown-linux-gnu/:$LD_LIBRARY_PATH
+#export LD_LIBRARY_PATH=/usr/local/clang/lib/x86_64-unknown-linux-gnu/:$LD_LIBRARY_PATH
 
-alias use_clang='
-unset CPLUS_INCLUDE_PATH
+#alias use_clang='
+#unset CPLUS_INCLUDE_PATH
 
-export CC=clang
+#export CC=clang
 
-export CXX=clang++
+#export CXX=clang++
 
-export LIBRARY_PATH=/usr/local/clang/lib/x86_64-unknown-linux-gnu/:$LIBRARY_PATH
+#export LIBRARY_PATH=/usr/local/clang/lib/x86_64-unknown-linux-gnu/:$LIBRARY_PATH
 
-export CPATH=/usr/local/clang/include:$CPATH
+#export CPATH=/usr/local/clang/include:$CPATH
 
-export CPATH=/usr/local/clang/include/x86_64-unknown-linux-gnu/c++/v1:$CPATH
+#export CPATH=/usr/local/clang/include/x86_64-unknown-linux-gnu/c++/v1:$CPATH
 
-export CPLUS_INCLUDE_PATH=/usr/local/clang/include/c++/v1:$CPLUS_INCLUDE_PATH'
+#export CPLUS_INCLUDE_PATH=/usr/local/clang/include/c++/v1:$CPLUS_INCLUDE_PATH'
 
 #gcc13.3.0的环境变量
-export PATH=/gcc13.3.0/bin:$PATH
+#export PATH=/gcc13.3.0/bin:$PATH
 
-export LD_LIBRARY_PATH=/gcc13.3.0/lib64:$LD_LIBRARY_PATH
+#export LD_LIBRARY_PATH=/gcc13.3.0/lib64:$LD_LIBRARY_PATH
 
-alias use_gcc='
+#alias use_gcc='
 
-unset CPLUS_INCLUDE_PATH
+#unset CPLUS_INCLUDE_PATH
 
-export CC=gcc
+#export CC=gcc
 
-export CXX=g++
+#export CXX=g++
 
-export CPLUS_INCLUDE_PATH=/gcc13.3.0/include/c++/13.3.0:$CPLUS_INCLUDE_PATH
+#export CPLUS_INCLUDE_PATH=/gcc13.3.0/include/c++/13.3.0:$CPLUS_INCLUDE_PATH
 
-export LIBRARY_PATH=/gcc13.3.0/lib64:$LIBRARY_PATH'
+#export LIBRARY_PATH=/gcc13.3.0/lib64:$LIBRARY_PATH'
 
 #为eigen3创建预处理C/C++代码时的头文件搜索路径
 export CPATH=/usr/local/eigen/include/eigen3:$CPATH
@@ -80,6 +123,8 @@ export PATH=/home/diketene/.local/bin:$PATH
 export PATH=/usr/local/valgrind/bin:$PATH
 
 #oneapi-mkl
+export CPATH=/opt/intel/oneapi/mkl/latest/include:$CPATH
+
 export LD_LIBRARY_PATH=/opt/intel/oneapi/mkl/latest/lib:$LD_LIBRARY_PATH
 
 #OpenBLAS
@@ -91,6 +136,8 @@ export LD_LIBRARY_PATH=/usr/local/OpenBLAS/lib:$LD_LIBRARY_PATH
 export CPATH=/usr/local/gtest/include/:$CPATH
 
 export LD_LIBRARY_PATH=/usr/local/gtest/lib:$LD_LIBRARY_PATH
+
+export LIBRARY_PATH=/usr/local/gtest/lib:$LIBRARY_PATH
 
 #kokkos
 export PATH=/usr/local/kokkos/bin:$PATH
@@ -110,19 +157,6 @@ export PATH=/usr/local/imagemagick/bin/:$PATH
 export LD_LIBRARY_PATH=/usr/local/imagemagick/lib/:$LD_LIBRARY_PATH
 
 export CPATH=/usr/local/imagemagick/include/:$CPATH
-
-#设置conda的环境变量
-__conda_setup="$('/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)" 
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
 
 
 # Set name of the theme to load --- if set to "random", it will
@@ -290,3 +324,22 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;33;44m'
 export LESS_TERMCAP_se=$'\E[0m'
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/diketene/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/diketene/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/diketene/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/diketene/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+alias q=exit
+
+source $HOME/dotfiles/modules/config/modules_init.sh
