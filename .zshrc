@@ -7,12 +7,15 @@ export ZSH="$HOME/.oh-my-zsh"
 #Haskell
 export PATH=$HOME/.ghcup/bin/:$PATH
 
+#benchmark
+export CPATH=/usr/local/benchmark/include:$CPATH
+
 #wigcpp
-export CPATH=/usr/local/wigcpp/include:$CPATH
+export CPATH=$HOME/.my_apps/wigcpp/include:$CPATH
 
-export LIBRARY_PATH=/usr/local/wigcpp/lib:$LIBRARY_PATH
+export LIBRARY_PATH=$HOME/.my_apps/wigcpp/lib:$LIBRARY_PATH
 
-export LD_LIBRARY_PATH=/usr/local/wigcpp/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$HOME/.my_apps/wigcpp/lib:$LD_LIBRARY_PATH
 
 #wigxjpf
 export CPATH=/usr/local/wigxjpf/include:$CPATH
@@ -102,6 +105,8 @@ export CPATH=/usr/local/boost/include/:$CPATH
 
 #为boost设置库文件的环境变量
 export LD_LIBRARY_PATH=/usr/local/boost/lib:$LD_LIBRARY_PATH
+
+export LIBRARY_PATH=/usr/local/boost/lib:$LIBRARY_PATH
 
 #CMake-3.31.4的环境变量
 export PATH=/usr/local/cmake/cmake-3.31.4-linux-x86_64/bin:$PATH
@@ -228,7 +233,15 @@ ZSH_THEME="af-magic"
 plugins=(git 
          zsh-autosuggestions
          zsh-syntax-highlighting
+				 z
+				 extract
+				 web-search
+				 vi-mode
 )
+
+VI_MODE_SET_CURSOR=true
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+MODE_INDICATOR="%F{blue}N%f"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -285,18 +298,6 @@ alias mv="mv -i"
 if ! pgrep -u "$USER" -f "ssh-agent -s" > /dev/null; then
      eval "$(ssh-agent -s)"
 fi
-
-#将终端默认模式设置为vim模式
-bindkey -v
-
-export KEYTIMEOUT=1  # 缩短模式切换延迟
-function zle-line-init zle-keymap-select {
-  RPS1="${${KEYMAP/vicmd/NOR}/(main|viins)/INS}"
-  RPS2=$RPS1
-  zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-select
 
 # 绑定 Ctrl+R 到 fzf 历史命令搜索
 bindkey '^R' fzf-history-widget

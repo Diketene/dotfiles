@@ -5,6 +5,7 @@ CompileFlags:
     "-std=c++23",
     "-I/usr/local/clang/lib/clang/20/include",
     "-I/usr/local/clang/include/c++/v1",
+		"-I/usr/local/clang/include/x86_64-unknown-linux-gnu/c++/v1",
     "-stdlib=libc++",
     "-fmodule-file=std=/usr/local/clang/share/libc++/v1/std.pcm"
   ]
