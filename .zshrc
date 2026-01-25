@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:$HOME/.local/bin:$MYAPP_PATH/bin:$PATH
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -7,8 +7,11 @@ export ZSH="$HOME/.oh-my-zsh"
 #Haskell
 export PATH=$HOME/.ghcup/bin/:$PATH
 
+
+export MYAPP_PATH="$HOME/.myapps"
+
 #benchmark
-export CPATH=/usr/local/benchmark/include:$CPATH
+export CPATH=$MYAPP_PATH/benchmark/include:$CPATH
 
 #wigcpp
 export CPATH=$HOME/.my_apps/wigcpp/include:$CPATH
@@ -18,9 +21,9 @@ export LIBRARY_PATH=$HOME/.my_apps/wigcpp/lib:$LIBRARY_PATH
 export LD_LIBRARY_PATH=$HOME/.my_apps/wigcpp/lib:$LD_LIBRARY_PATH
 
 #wigxjpf
-export CPATH=/usr/local/wigxjpf/include:$CPATH
+export CPATH=$MYAPP_PATH/wigxjpf/include:$CPATH
 
-export LIBRARY_PATH=/usr/local/wigxjpf/lib:$LIBRARY_PATH
+export LIBRARY_PATH=$MYAPP_PATH/wigxjpf/lib:$LIBRARY_PATH
 
 #oneTBB
 export CPATH=/opt/intel/oneapi/tbb/latest/include:$CPATH
@@ -30,40 +33,40 @@ export LD_LIBRARY_PATH=/opt/intel/oneapi/tbb/latest/lib:$LD_LIBRARY_PATH
 export LIBRARY_PATH=/opt/intel/oneapi/tbb/latest/lib:$LIBRARY_PATH
 
 #libtorch
-export CPATH=/usr/local/libtorch/include:$CPATH
+export CPATH=$MYAPP_PATH/libtorch/include:$CPATH
 
-export CPATH=/usr/local/libtorch/include/torch/csrc/api/include:$CPATH
+export CPATH=$MYAPP_PATH/libtorch/include/torch/csrc/api/include:$CPATH
 
-export LD_LIBRARY_PATH=/usr/local/libtorch/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$MYAPP_PATH/libtorch/lib:$LD_LIBRARY_PATH
 
-export LIBRARY_PATH=/usr/local/libtorch/lib:$LIBRARY_PATH
+export LIBRARY_PATH=$MYAPP_PATH/libtorch/lib:$LIBRARY_PATH
 
 #libcint的环境变量
-export CPATH=/usr/local/cint/include:$CPATH
+export CPATH=$MYAPP_PATH/cint/include:$CPATH
 
-export LD_LIBRARY_PATH=/usr/local/cint/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$MYAPP_PATH/cint/lib:$LD_LIBRARY_PATH
 
 #xtl-0.8.0
-export CPATH=/usr/local/xtl/include:$CPATH
+export CPATH=$MYAPP_PATH/xtl/include:$CPATH
 
 #xtensor-0.26.0
-export CPATH=/usr/local/xtensor/include:$CPATH
+export CPATH=$MYAPP_PATH/xtensor/include:$CPATH
 
 #xsimd-13.2.0
-export CPATH=/usr/local/xsimd/include:$CPATH
+export CPATH=$MYAPP_PATH/xsimd/include:$CPATH
 
 #xtensor-blas-0.22.0
-export CPATH=/usr/local/xtensor-blas/include:$CPATH
+export CPATH=$MYAPP_PATH/xtensor-blas/include:$CPATH
 
 #cuda的环境变量
-export PATH=/usr/local/cuda/bin:$PATH
+export PATH=$MYAPP_PATH/cuda/bin:$PATH
 
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64/:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$MYAPP_PATH/cuda/lib64/:$LD_LIBRARY_PATH
 
 #llvm的环境变量
-#export PATH=/usr/local/clang/bin:$PATH
+#export PATH=$MYAPP_PATH/clang/bin:$PATH
 
-#export LD_LIBRARY_PATH=/usr/local/clang/lib/x86_64-unknown-linux-gnu/:$LD_LIBRARY_PATH
+#export LD_LIBRARY_PATH=$MYAPP_PATH/clang/lib/x86_64-unknown-linux-gnu/:$LD_LIBRARY_PATH
 
 #alias use_clang='
 #unset CPLUS_INCLUDE_PATH
@@ -72,13 +75,13 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64/:$LD_LIBRARY_PATH
 
 #export CXX=clang++
 
-#export LIBRARY_PATH=/usr/local/clang/lib/x86_64-unknown-linux-gnu/:$LIBRARY_PATH
+#export LIBRARY_PATH=$MYAPP_PATH/clang/lib/x86_64-unknown-linux-gnu/:$LIBRARY_PATH
 
-#export CPATH=/usr/local/clang/include:$CPATH
+#export CPATH=$MYAPP_PATH/clang/include:$CPATH
 
-#export CPATH=/usr/local/clang/include/x86_64-unknown-linux-gnu/c++/v1:$CPATH
+#export CPATH=$MYAPP_PATH/clang/include/x86_64-unknown-linux-gnu/c++/v1:$CPATH
 
-#export CPLUS_INCLUDE_PATH=/usr/local/clang/include/c++/v1:$CPLUS_INCLUDE_PATH'
+#export CPLUS_INCLUDE_PATH=$MYAPP_PATH/clang/include/c++/v1:$CPLUS_INCLUDE_PATH'
 
 #gcc13.3.0的环境变量
 #export PATH=/gcc13.3.0/bin:$PATH
@@ -98,34 +101,34 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64/:$LD_LIBRARY_PATH
 #export LIBRARY_PATH=/gcc13.3.0/lib64:$LIBRARY_PATH'
 
 #为eigen3创建预处理C/C++代码时的头文件搜索路径
-export CPATH=/usr/local/eigen/include/eigen3:$CPATH
+export CPATH=$MYAPP_PATH/eigen/include/eigen3:$CPATH
 
 #为boost设置头文件搜索路径
-export CPATH=/usr/local/boost/include/:$CPATH
+export CPATH=$MYAPP_PATH/boost/include/:$CPATH
 
 #为boost设置库文件的环境变量
-export LD_LIBRARY_PATH=/usr/local/boost/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$MYAPP_PATH/boost/lib:$LD_LIBRARY_PATH
 
-export LIBRARY_PATH=/usr/local/boost/lib:$LIBRARY_PATH
+export LIBRARY_PATH=$MYAPP_PATH/boost/lib:$LIBRARY_PATH
 
 #CMake-3.31.4的环境变量
-export PATH=/usr/local/cmake/cmake-3.31.4-linux-x86_64/bin:$PATH
+export PATH=$MYAPP_PATH/cmake/cmake-3.31.4-linux-x86_64/bin:$PATH
 
 #.NET环境变量
 export PATH=$HOME/.dotnet:$PATH
 
 #OpenMPI环境变量
-export PATH=/usr/local/openmpi/bin:$PATH
+export PATH=$MYAPP_PATH/openmpi/bin:$PATH
 
-export LD_LIBRARY_PATH=/usr/local/openmpi/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$MYAPP_PATH/openmpi/lib:$LD_LIBRARY_PATH
 
-export CPATH=/usr/local/openmpi/include:$CPATH
+export CPATH=$MYAPP_PATH/openmpi/include:$CPATH
 
 #pip：用户环境下安装的二进制文件的环境变量
 export PATH=/home/diketene/.local/bin:$PATH
 
 #valgrind
-export PATH=/usr/local/valgrind/bin:$PATH
+export PATH=$MYAPP_PATH/valgrind/bin:$PATH
 
 #oneapi-mkl
 export CPATH=/opt/intel/oneapi/mkl/latest/include:$CPATH
@@ -133,35 +136,35 @@ export CPATH=/opt/intel/oneapi/mkl/latest/include:$CPATH
 export LD_LIBRARY_PATH=/opt/intel/oneapi/mkl/latest/lib:$LD_LIBRARY_PATH
 
 #OpenBLAS
-export CPATH=/usr/local/OpenBLAS/include/openblas:$CPATH
+export CPATH=$MYAPP_PATH/OpenBLAS/include/openblas:$CPATH
 
-export LD_LIBRARY_PATH=/usr/local/OpenBLAS/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$MYAPP_PATH/OpenBLAS/lib:$LD_LIBRARY_PATH
 
 #googletest
-export CPATH=/usr/local/gtest/include/:$CPATH
+export CPATH=$MYAPP_PATH/gtest/include/:$CPATH
 
-export LD_LIBRARY_PATH=/usr/local/gtest/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$MYAPP_PATH/gtest/lib:$LD_LIBRARY_PATH
 
-export LIBRARY_PATH=/usr/local/gtest/lib:$LIBRARY_PATH
+export LIBRARY_PATH=$MYAPP_PATH/gtest/lib:$LIBRARY_PATH
 
 #kokkos
-export PATH=/usr/local/kokkos/bin:$PATH
+export PATH=$MYAPP_PATH/kokkos/bin:$PATH
 
-export CPATH=/usr/local/kokkos/include:$CPATH 
+export CPATH=$MYAPP_PATH/kokkos/include:$CPATH 
 
 #texlive
-export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
+export PATH=$MYAPP_PATH/texlive/2025/bin/x86_64-linux:$PATH
 
-export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
+export MANPATH=$MYAPP_PATH/texlive/2025/texmf-dist/doc/man:$MANPATH
 
-export INFOPATH=/usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH
+export INFOPATH=$MYAPP_PATH/texlive/2025/texmf-dist/doc/info:$INFOPATH
 
 #imagemagick
-export PATH=/usr/local/imagemagick/bin/:$PATH
+export PATH=$MYAPP_PATH/imagemagick/bin/:$PATH
 
-export LD_LIBRARY_PATH=/usr/local/imagemagick/lib/:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$MYAPP_PATH/imagemagick/lib/:$LD_LIBRARY_PATH
 
-export CPATH=/usr/local/imagemagick/include/:$CPATH
+export CPATH=$MYAPP_PATH/imagemagick/include/:$CPATH
 
 
 # Set name of the theme to load --- if set to "random", it will
@@ -247,7 +250,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# export MANPATH="$MYAPP_PATH/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
