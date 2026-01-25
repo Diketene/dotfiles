@@ -7,18 +7,18 @@ export ZSH="$HOME/.oh-my-zsh"
 #Haskell
 export PATH=$HOME/.ghcup/bin/:$PATH
 
-
 export MYAPP_PATH="$HOME/.myapps"
+
+#vcpkg
+export PATH=$MYAPP_PATH/vcpkg/:$PATH
 
 #benchmark
 export CPATH=$MYAPP_PATH/benchmark/include:$CPATH
 
 #wigcpp
-export CPATH=$HOME/.my_apps/wigcpp/include:$CPATH
+export CPATH=$MYAPP_PATH/wigcpp/include:$CPATH
 
-export LIBRARY_PATH=$HOME/.my_apps/wigcpp/lib:$LIBRARY_PATH
-
-export LD_LIBRARY_PATH=$HOME/.my_apps/wigcpp/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$MYAPP_PATH/wigcpp/lib:$LIBRARY_PATH
 
 #wigxjpf
 export CPATH=$MYAPP_PATH/wigxjpf/include:$CPATH
