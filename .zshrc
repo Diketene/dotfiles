@@ -59,9 +59,9 @@ export CPATH=$MYAPP_PATH/xsimd/include:$CPATH
 export CPATH=$MYAPP_PATH/xtensor-blas/include:$CPATH
 
 #cuda的环境变量
-export PATH=$MYAPP_PATH/cuda/bin:$PATH
+#export PATH=$MYAPP_PATH/cuda/bin:$PATH
 
-export LD_LIBRARY_PATH=$MYAPP_PATH/cuda/lib64/:$LD_LIBRARY_PATH
+#export LD_LIBRARY_PATH=$MYAPP_PATH/cuda/lib64/:$LD_LIBRARY_PATH
 
 #llvm的环境变量
 #export PATH=$MYAPP_PATH/clang/bin:$PATH
@@ -83,10 +83,14 @@ export LD_LIBRARY_PATH=$MYAPP_PATH/cuda/lib64/:$LD_LIBRARY_PATH
 
 #export CPLUS_INCLUDE_PATH=$MYAPP_PATH/clang/include/c++/v1:$CPLUS_INCLUDE_PATH'
 
-#gcc13.3.0的环境变量
-#export PATH=/gcc13.3.0/bin:$PATH
+#gcc15.2.0
+export PATH=$MYAPP_PATH/gcc-15.2.0/bin/:$PATH
 
-#export LD_LIBRARY_PATH=/gcc13.3.0/lib64:$LD_LIBRARY_PATH
+export CPLUS_INCLUDE_PATH=$MYAPP_PATH/gcc-15.2.0/include/c++/15.2.0/:$CPLUS_INCLUDE_PATH
+
+export LD_LIBRARY_PATH=$MYAPP_PATH/gcc-15.2.0/lib64/:$LD_LIBRARY_PATH
+
+export LIBRARY_PATH=$MYAPP_PATH/gcc-15.2.0/lib64/:$LIBRARY_PATH
 
 #alias use_gcc='
 
