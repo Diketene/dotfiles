@@ -9,6 +9,16 @@ export PATH=$HOME/.ghcup/bin/:$PATH
 
 export MYAPP_PATH="$HOME/.myapps"
 
+#lua
+export PATH=$MYAPP_PATH/lua/5.1.4.9/bin:$PATH
+export LD_LIBRARY_PATH=$MYAPP_PATH/lua/5.1.4.9/lib:$LD_LIBRARY_PATH
+export CPATH=$MYAPP_PATH/lua/5.1.4.9/include:$CPATH
+
+#lmod
+export MODULEPATH=$MYAPP_PATH/modulefiles/Core/:$MODULEPATH
+export MODULEPATH=$HOME/dotfiles/modulefiles/:$MODULEPATH
+source $MYAPP_PATH/lmod/lmod/init/profile
+
 #vcpkg
 export PATH=$MYAPP_PATH/vcpkg/:$PATH
 
@@ -84,13 +94,13 @@ export CPATH=$MYAPP_PATH/xtensor-blas/include:$CPATH
 #export CPLUS_INCLUDE_PATH=$MYAPP_PATH/clang/include/c++/v1:$CPLUS_INCLUDE_PATH'
 
 #gcc15.2.0
-export PATH=$MYAPP_PATH/gcc-15.2.0/bin/:$PATH
+#export PATH=$MYAPP_PATH/gcc-15.2.0/bin/:$PATH
 
-export CPLUS_INCLUDE_PATH=$MYAPP_PATH/gcc-15.2.0/include/c++/15.2.0/:$CPLUS_INCLUDE_PATH
+#export CPLUS_INCLUDE_PATH=$MYAPP_PATH/gcc-15.2.0/include/c++/15.2.0/:$CPLUS_INCLUDE_PATH
 
-export LD_LIBRARY_PATH=$MYAPP_PATH/gcc-15.2.0/lib64/:$LD_LIBRARY_PATH
+#export LD_LIBRARY_PATH=$MYAPP_PATH/gcc-15.2.0/lib64/:$LD_LIBRARY_PATH
 
-export LIBRARY_PATH=$MYAPP_PATH/gcc-15.2.0/lib64/:$LIBRARY_PATH
+#export LIBRARY_PATH=$MYAPP_PATH/gcc-15.2.0/lib64/:$LIBRARY_PATH
 
 #alias use_gcc='
 
@@ -348,6 +358,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-alias q=exit
-
-source $HOME/dotfiles/modules/config/modules_init.sh
+alias auto="$HOME/.ssh/auto_ssh.exp"
