@@ -1,37 +1,37 @@
-If:
-  PathMatch: [.*\.cpp, .*\.cxx, .*\.cc, .*\.hpp, .*]
-CompileFlags:
-  Add: [
-    "-std=c++23",
-    "-I/usr/local/clang/lib/clang/20/include",
-    "-I/usr/local/clang/include/c++/v1",
-		"-I/usr/local/clang/include/x86_64-unknown-linux-gnu/c++/v1",
-    "-stdlib=libc++",
-    "-fmodule-file=std=/usr/local/clang/share/libc++/v1/std.pcm"
-  ]
+#If:
+#  PathMatch: [.*\.cpp, .*\.cxx, .*\.cc, .*\.hpp, .*]
+#CompileFlags:
+#  Add: [
+#    "-std=c++23",
+#    "-I/usr/local/clang/lib/clang/20/include",
+#    "-I/usr/local/clang/include/c++/v1",
+#		"-I/usr/local/clang/include/x86_64-unknown-linux-gnu/c++/v1",
+#    "-stdlib=libc++",
+#    "-fmodule-file=std=/usr/local/clang/share/libc++/v1/std.pcm"
+#  ]
 
----
+#---
 
-If:
-  PathMatch: [.*\.c, .*\.h]
-CompileFlags:
-  Add: [
-		"-xc",
-    "-std=c17",
+#If:
+#  PathMatch: [.*\.c, .*\.h]
+#CompileFlags:
+#  Add: [
+#		"-xc",
+#    "-std=c17",
 #   "-I/usr/local/clang/lib/clang/20/include",
 #    "-I/usr/local/clang/include/c++/v1",
 #    "-I/usr/local/clang/include/x86_64-unknown-linux-gnu/c++/v1",
-  ]
+#  ]
 
----
+#---
 
-If:
-  PathMatch: [.*\.cu]
-CompileFlags:
-  Add: [
-    "--cuda-gpu-arch=sm_89",
-    "--cuda-path=/usr/local/cuda",
-    "-I/usr/local/clang/lib/clang/20/include",
-    "-I/usr/local/clang/include/c++/v1",
-    "-stdlib=libc++"
-  ]
+#If:
+#  PathMatch: [.*\.cu]
+#CompileFlags:
+#  Add: [
+#    "--cuda-gpu-arch=sm_89",
+#    "--cuda-path=/usr/local/cuda",
+#    "-I/usr/local/clang/lib/clang/20/include",
+#    "-I/usr/local/clang/include/c++/v1",
+#    "-stdlib=libc++"
+#  ]
